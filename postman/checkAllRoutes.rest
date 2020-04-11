@@ -1,0 +1,58 @@
+get http://localhost:8080/
+
+###
+post http://localhost:8080/api/postgrievances/
+Content-Type: application/json
+
+{
+"aadhaarNumberofResident": 1234,
+"grievanceTitle":"abc",
+"grievanceDescription": "xyz, 1234",
+"modeOfGrievance":" qwerty",
+"departmentConcerned": "A",
+"userReferred":"c1",
+"modeOfGrievance":"Q",
+"departmentReferred": "B",
+"currentDepartment": "n",
+"currentUser":"asdfg",
+"solutionSuggested":"ytrewq",
+"actionTaken": "Process continued",
+"statusPresently":"Closed",
+"remarks":"lopiuy"
+}
+
+### 
+patch http://localhost:8080/api/updategrievances/5e909d0a9503de3e08ed23e5
+Content-Type: application/json
+
+{
+"currentDepartment": "n",
+"currentUser":"asdfg",
+"departmentReferred": "C",
+"userReferred":"c1",
+"solutionSuggested":"ytrewq",
+"actionTaken": "Process continued",
+"statusPresently":"closed",
+"remarks":"lopiuy"
+}
+
+###
+patch http://localhost:1000/api/updategrievances/
+Content-Type: application/json
+
+{
+"aadhaarNumberofResident": 1234,
+"grievanceTitle":"abc",
+"grievanceDescription": "poliuy, 1234",
+"modeOfGrievance":" qwerty",
+"departmentConcerned": "A",
+"userReferred":"c1",
+"modeOfGrievance":"Q",
+"departmentReferred": "C",
+"currentDepartment": "n",
+"currentUser":"asdfg",
+"solutionSuggested":"ytrewq",
+"actionTaken": "Process continued",
+"statusPresently":"pending",
+"remarks":"lopiuy"
+}
