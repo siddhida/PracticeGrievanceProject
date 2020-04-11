@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const dotenv = require("dotenv").config();
 const {MONGODB_URI, MONGODB_PASSWORD} = process.env
 
 mongoose.set('useFindAndModify', false)

@@ -6,38 +6,36 @@ Content-Type: application/json
 
 {
 "aadhaarNumberofResident": 1234,
-"grievanceTitle":"abc",
-"grievanceDescription": "xyz, 1234",
-"modeOfGrievance":" qwerty",
-"departmentConcerned": "A",
-"userReferred":"c1",
-"modeOfGrievance":"Q",
-"departmentReferred": "B",
-"currentDepartment": "n",
-"currentUser":"asdfg",
-"solutionSuggested":"ytrewq",
+"grievanceTitle":"Laptop Repair",
+"grievanceDescription": "Laptop is not getting ON",
+"modeOfGrievance":" Offline",
+"departmentReferred": "A",
+"userReferred":"A1",
+"currentDepartment": "G",
+"currentUser":"A1",
+"solutionSuggested":"Change Motherboard",
 "actionTaken": "Process continued",
-"statusPresently":"Closed",
+"statusPresently":"Started",
 "remarks":"lopiuy"
 }
 
 ### 
-patch http://localhost:8080/api/updategrievances/5e909d0a9503de3e08ed23e5
+patch http://localhost:8080/api/updategrievances/5e91aa2e21f2a82becb3daf1
 Content-Type: application/json
 
 {
-"currentDepartment": "n",
-"currentUser":"asdfg",
-"departmentReferred": "C",
-"userReferred":"c1",
-"solutionSuggested":"ytrewq",
+"currentDepartment": "A",
+"currentUser":"A1",
+"departmentReferred": "B",
+"userReferred":"B1",
+"solutionSuggested":"change motherboard",
 "actionTaken": "Process continued",
-"statusPresently":"closed",
-"remarks":"lopiuy"
+"statusPresently":"Pending",
+"remarks":"stage2"
 }
 
 ###
-patch http://localhost:1000/api/updategrievances/
+patch http://localhost:1000/api/updategrievances/5e91aa2e21f2a82becb3daf1
 Content-Type: application/json
 
 {

@@ -1,9 +1,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
+dotenv.config();
 require("./db");
 
 const PORT = process.env.PORT || 8080;
-dotenv.config();
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
