@@ -2,16 +2,16 @@ const gDdetail = require("../model/grievanceDetail");
 
 module.exports = {
   async updateGrievances(req, res) {
-    console.log("Param's Id: ", { id: req.params.id });
-    console.log("Update Body:", { ...req.body });
+    // console.log("Param's Id: ", { id: req.params.id });
+    // console.log("Update Body:", { ...req.body });
     try {
       const targetedGrievance = await gDdetail.findOneAndUpdate(
         { _id: req.params.id },
         {
           currentDepartment: req.body.currentDepartment,
           currentUser: req.body.currentUser,
-          departmentReferred: departmentReferred.push(req.body.departmentReferred),
-          userReferred: userReferred.push(req.body.userReferred),
+          departmentReferred: gDdetail.push(req.body.departmentReferred),
+          userReferred: gDdetail.push(req.body.userReferred),
           solutionSuggested: solutionSuggested.push(req.body.solutionSuggested),
           actionTaken: actionTaken.push(req.body.actionTaken),
           statusPresently: statusPresently.push(req.body.statusPresently),
