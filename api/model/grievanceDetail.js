@@ -33,6 +33,12 @@ const grivanceDetailSchema = new Schema(
     actionTaken: [],
     statusPresently: [],
     remarks: [],
+    users: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",
+      },
+    ],
   },
   { timestamps: true }
 );

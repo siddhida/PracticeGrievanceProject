@@ -39,6 +39,8 @@ patch http://localhost:1000/api/updategrievances/5e91aa2e21f2a82becb3daf1
 Content-Type: application/json
 
 {
+"password": "hashedPassword",
+"activationToken": "activationToken",
 "aadhaarNumberofResident": 1234,
 "grievanceTitle":"abc",
 "grievanceDescription": "poliuy, 1234",
@@ -53,4 +55,53 @@ Content-Type: application/json
 "actionTaken": "Process continued",
 "statusPresently":"pending",
 "remarks":"lopiuy"
+}
+
+###
+post http://localhost:8080/api/postusers
+Content-Type: application/json
+
+{
+"name": "Siddhi",
+"email": "jhasiddhida@gmail.com",
+"aadhaarNumber": 663598188247,
+"department": "Monitor",
+"role": "Role1",
+"empId":9876,
+"password": "hashedPassword"
+}
+
+###
+
+get http://localhost:8080/api/getgrievances
+
+###
+get http://localhost:8080/api/getusers
+
+###
+get http://localhost:8080/api/searchgrievances?department=A
+
+###
+POST http://localhost:8080/api/register/
+Content-Type: application/json
+
+{
+        "name": "Siddhi",
+        "email": "jhasiddhida@gmail.com",
+        "aadhaarNumber": 663598188247,
+        "role": "Role1",
+        "department": "Monitor"
+}
+
+###
+
+POST http://localhost:8080/api/register/
+Content-Type: application/json
+
+{
+        "name": "Siddhi",
+        "email": "jhaasiddhida@gmail.com",
+        "aadhaarNumber": 663598188249,
+        "role": "Role1",
+        "department": "Monitor"
 }

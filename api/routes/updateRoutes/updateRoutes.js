@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { updateGrievances } = require("../../controller/updateController");
+const { updateGrievances } = require("../../controller/updateControllers");
 
 // router.patch(`/api/updategrievances/`,function(req, res){
 //   console.log("I am in Patch Route.")
