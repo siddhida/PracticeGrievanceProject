@@ -1,5 +1,5 @@
 const gDdetail = require("../model/grievanceDetail");
-const uDetail = require("../model/user");
+const uDetail = require("../model/userDetail");
 const jwt = require("jsonwebtoken");
 const { hash, compare } = require("bcryptjs");
 const Joi = require("@hapi/joi");
@@ -86,12 +86,12 @@ module.exports = {
       });
       if (error) return res.status(422).json({ Error: error.message });
       const emailCheck = await uDetail.findOne({ email: req.body.email });
-      console.log(emailCheck);
+      console.log("Email Check = ", emailCheck);
       if (emailCheck) return res.send({ error: "Duplicate Email" });
       const aadhaarCheck = await uDetail.findOne({
         aadhaarNumber: req.body.aadhaarNumber,
       });
-      console.log(aadhaarCheck);
+      console.log("Aadhaar Check = ", aadhaarCheck);
       if (aadhaarCheck) return res.send({ error: "Duplicate aadhaarnumber" });
       const activationToken = await jwt.sign(
         { id: Math.random() },
@@ -102,16 +102,17 @@ module.exports = {
       const empId = 9000 + totalUsers;
       const rawPassword = Math.floor(Math.random() * 100000000).toString();
       const hashedPassword = await hash(rawPassword, 10);
+      console.log("Total Users = ", totalUsers, "Employee Id = ", empId);
       const userDetail = await new uDetail(
-        { ...req.body },
-        {
-          empId: empId,
-          password: hashedPassword,
-          activationToken: activationToken,
-        }
+        { ...req.body }
+        // {
+        //   empId: empId,
+        //   password: hashedPassword,
+        //   activationToken: activationToken,
+        // }
       );
       console.log("userDetail = ", userDetail);
-      userDetail.save(function (error) {
+      await userDetail.save(function (error) {
         console.log("Your userDetail has been saved.");
       });
       console.log("userDetail After Saving = ", userDetail);

@@ -1,5 +1,5 @@
 const gDdetail = require("../model/grievanceDetail");
-const uDetail = require("../model/user");
+const uDetail = require("../model/userDetail");
 
 module.exports = {
   async getGrievances(req, res) {
@@ -25,8 +25,10 @@ module.exports = {
           error: "Please enter a definite query to filter out jobs",
         });
       if (req.query.department) {
-        var deptGrievances = await gDdetail.find({departmentReferred:req.query.department});
-      res.status(200).send(deptGrievances)
+        var deptGrievances = await gDdetail.find({
+          departmentReferred: req.query.department,
+        });
+        res.status(200).send(deptGrievances);
       }
     } catch (error) {
       return res.status(500).send({ error: error.message });
