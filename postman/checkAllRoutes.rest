@@ -1,40 +1,167 @@
-get http://localhost:8080/
+###--------------------Register USer----------------------------------
+POST http://localhost:8080/api/register/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTk0MjA2MzgwYmMzMjJhOTA5ZTU4MjciLCJpYXQiOjE1ODY3NjU5ODAsImV4cCI6MTY0Njc2NTk4MH0.ziHqUWS8Fv9cHEvhTasCB4tgUVEPwbd1kj0OrJXd4_U
 
-###
+{
+        "name": "Harish",
+        "email": "harishponna55@gmail.com",
+        "aadhaarNumber": 663598188249,
+        "role": "Role1",
+        "department": "USB Ports"
+}
+####
+
+###----------Register User By Admin----------------------
+post http://localhost:8080/api/register/
+Content-Type: application/json
+
+{
+        "name": "Harish",
+        "email": "harishponna55@gmail.com",
+        "aadhaarNumber": 663598188249,
+        "role": "Role1",
+        "department": "USB Ports"
+}
+
+###-------------Login---------------
+post http://localhost:8080/api/login/
+Content-Type: application/json
+
+{
+        "empId": 9004,
+        "password": "37902023"       
+}
+
+###-----------Logout------------------------------
+delete http://localhost:8080/api/logout/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkyYWY4M2RmMjQ4YjE4YzQ0ZjNmYzIiLCJpYXQiOjE1ODY2ODYyMDQsImV4cCI6MTY0NjY4NjIwNH0.w2SEDYrU1tMBYVCIikFT1o6ChLOrfBSIXLMlMk2MJUA
+
+###//----------------------Forgot Password------------------------------
+post http://localhost:8080/api/forgotpassword/
+Content-Type: application/json
+
+{
+     "empId": 9000,
+     "aadhaarNumber": 663598188247  
+}
+
+
+
+
+
+
+
+
+###------------Post Grievances-------------------------------------
 post http://localhost:8080/api/postgrievances/
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkzMWFjYzA4MTg3ODBiYTQ0ODUwODEiLCJpYXQiOjE1ODY3MDMwOTYsImV4cCI6MTY0NjcwMzA5Nn0.dSREx-Ewf7fCOcVeP4ff2RmN_Ogdp2FRYgPi0RDEuqs
 
 {
-"aadhaarNumberofResident": 1234,
-"grievanceTitle":"Laptop Repair",
-"grievanceDescription": "Laptop is not getting ON",
+"aadhaarNumberofResident": 987654321,
+"grievanceTitle":"Laptop's Keyboard Repair",
+"grievanceDescription": "Key in My Lappy is Broken.",
 "modeOfGrievance":" Offline",
-"departmentReferred": "A",
-"userReferred":"A1",
-"currentDepartment": "G",
-"currentUser":"A1",
-"solutionSuggested":"Change Motherboard",
-"actionTaken": "Process continued",
+"departmentReferred": "Keyboard",
+"userReferred":"Siddhi",
+"currentDepartment": "Grievance",
+"currentUser":"G1",
+"solutionSuggested":"Change Keyboard",
+"actionTaken": "Process started",
 "statusPresently":"Started",
-"remarks":"lopiuy"
-}
-
-### 
-patch http://localhost:8080/api/updategrievances/5e91aa2e21f2a82becb3daf1
-Content-Type: application/json
-
-{
-"currentDepartment": "A",
-"currentUser":"A1",
-"departmentReferred": "B",
-"userReferred":"B1",
-"solutionSuggested":"change motherboard",
-"actionTaken": "Process continued",
-"statusPresently":"Pending",
-"remarks":"stage2"
+"remarks":"Will be done in 12 days..."
 }
 
 ###
+
+###-----------Update Grievance------------ 
+patch http://localhost:8080/api/updategrievances/5e91aa2e21f2a82becb3daf1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkyYWY4M2RmMjQ4YjE4YzQ0ZjNmYzIiLCJpYXQiOjE1ODY2NzE1MzUsImV4cCI6MTY0NjY3MTUzNX0.MXdJ2Xp782I1zCG7op6m22skY5yuJadgmIleS-2EO38
+
+{
+"currentDepartment": "Screen",
+"currentUser":9000,
+"departmentReferred": "USB Port",
+"userReferred":9002,
+"solutionSuggested":"Replace two new older ports",
+"actionTaken": "Process about to finish",
+"statusPresently":"In mid of completion",
+"remarks":"stage3"
+}
+
+
+
+
+###
+
+get http://localhost:8080/api/getgrievances
+
+###
+get http://localhost:8080/api/getusers
+
+###-----------Search Grievances by Department------------------------
+get http://localhost:8080/api/searchgrievances?department=Monitor
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkyYWY4M2RmMjQ4YjE4YzQ0ZjNmYzIiLCJpYXQiOjE1ODY2ODQwMzYsImV4cCI6MTY0NjY4NDAzNn0.HiKyFTQUpcHzLosSq4fPGIvm8ICxUUVET9V0ZaSAcwc
+
+###-------------Search Grievances by User----------------------------
+get http://localhost:8080/api/searchgrievances?user=9001
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkyYWY4M2RmMjQ4YjE4YzQ0ZjNmYzIiLCJpYXQiOjE1ODY2ODQwMzYsImV4cCI6MTY0NjY4NDAzNn0.HiKyFTQUpcHzLosSq4fPGIvm8ICxUUVET9V0ZaSAcwc
+
+###---------------Uploading Document Picture----------------------------------------------------
+patch http://localhost:8080/api/uploadDocPicture/5e932b60f1aa8d35840c824d
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkzMWFjYzA4MTg3ODBiYTQ0ODUwODEiLCJpYXQiOjE1ODY3MDMwOTYsImV4cCI6MTY0NjcwMzA5Nn0.dSREx-Ewf7fCOcVeP4ff2RmN_Ogdp2FRYgPi0RDEuqs
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="image4.jpg"
+Content-Type: image/jpeg
+
+< C:\Users\AGB\Desktop\Project\Images\image4.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+post https://localhost:8080/api/uploadDocPicture/
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkzMWFjYzA4MTg3ODBiYTQ0ODUwODEiLCJpYXQiOjE1ODY3MDAxODksImV4cCI6MTY0NjcwMDE4OX0.8JOmMqAvLN7YTvHtmMYGkSNUYiBCucF17dOkMTK2sPM
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="Image2.jpg"
+Content-Type: image/jpeg
+
+< C:\Users\AGB\Desktop\Project\Images\Image2.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+
+
+
+
+
+###==========================================================================================
+###-------------------------------Post User----------------------
+post http://localhost:8080/api/postusers
+Content-Type: application/json
+
+{
+"name": "Guddi",
+"email": "siddhidajha@gmail.com",
+"aadhaarNumber": 663598188247,
+"department": "Keyboard",
+"role": "Role1",
+"empId":9876,
+"password": 1234567
+}
+
+###------------------Update Grievance---------------In Correct Data in Body---------------------
 patch http://localhost:1000/api/updategrievances/5e91aa2e21f2a82becb3daf1
 Content-Type: application/json
 
@@ -57,51 +184,3 @@ Content-Type: application/json
 "remarks":"lopiuy"
 }
 
-###
-post http://localhost:8080/api/postusers
-Content-Type: application/json
-
-{
-"name": "Siddhi",
-"email": "jhasiddhida@gmail.com",
-"aadhaarNumber": 663598188247,
-"department": "Monitor",
-"role": "Role1",
-"empId":9876,
-"password": "hashedPassword"
-}
-
-###
-
-get http://localhost:8080/api/getgrievances
-
-###
-get http://localhost:8080/api/getusers
-
-###
-get http://localhost:8080/api/searchgrievances?department=A
-
-###
-POST http://localhost:8080/api/register/
-Content-Type: application/json
-
-{
-        "name": "Siddhi",
-        "email": "jhasiddhida@gmail.com",
-        "aadhaarNumber": 663598188247,
-        "role": "Role1",
-        "department": "Monitor"
-}
-
-###
-
-post http://localhost:8080/api/register/
-Content-Type: application/json
-
-{
-        "name": "Siddhi",
-        "email": "jhaasiddhida@gmail.com",
-        "aadhaarNumber": 663598188249,
-        "role": "Role1",
-        "department": "Monitor"
-}

@@ -30,6 +30,15 @@ module.exports = {
         });
         res.status(200).send(deptGrievances);
       }
+      if (req.query.user) {
+        var userGrievances = await gDdetail.find({
+          $or: [
+            { userReferred: Number(req.query.user) },
+            { currentUser: Number(req.query.user) },
+          ],
+        });
+        res.status(200).send(userGrievances);
+      }
     } catch (error) {
       return res.status(500).send({ error: error.message });
     }

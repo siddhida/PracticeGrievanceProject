@@ -1,12 +1,26 @@
 const { Router } = require("express");
+const upload = require("../../utils/multer");
 const router = Router();
-const { updateGrievances } = require("../../controller/updateControllers");
+const {
+  updateGrievances,
+  uploadDocPicture,
+} = require("../../controller/updateControllers");
+const { authenticateUsersToken } = require("../../middleware/authenticate");
 
-// router.patch(`/api/updategrievances/`,function(req, res){
-//   console.log("I am in Patch Route.")
-//   res.send({...req.body})
-// });
+//---To update Grievances and forward the tasks to next users-------------
+router.patch(
+  `/api/updategrievances/:id/`,
+  authenticateUsersToken,
+  updateGrievances
+);
 
-router.patch(`/api/updategrievances/:id/`, updateGrievances);
+//------To upload image of grievance documents-----------------------------
+
+router.patch(
+  `/api/uploadDocPicture/:id`,
+  authenticateUsersToken,
+  upload.single("image"),
+  uploadDocPicture
+);
 
 module.exports = router;

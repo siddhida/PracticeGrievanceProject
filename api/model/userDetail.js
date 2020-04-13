@@ -7,17 +7,18 @@ const userDetailSchema = new Schema(
     email: { type: String, required: true },
     aadhaarNumber: { type: Number, required: true },
     department: { type: String, required: true },
-    empId: { type: Number, required: true },
-    password: { type: Number, required: true },
+    empId: { type: Number },
+    password: { type: String },
     role: { type: String, required: true },
-    activationToken: { type: Number },
-    jwt: { type: Number, default: null },
+    activationToken: { type: String },
+    jwt: { type: String, default: null },
     pendingcaseCount: { type: String, default: null },
     totalcaseCount: { type: String, default: null },
     ReferToNextUser: [],
     grievanceId: [
       { type: Schema.Types.ObjectId, ref: "grievanceDetail", default: null },
     ],
+    isBlocked: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

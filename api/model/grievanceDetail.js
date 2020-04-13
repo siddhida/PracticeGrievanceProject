@@ -28,6 +28,7 @@ const grivanceDetailSchema = new Schema(
       type: String,
       required: true,
     },
+   docPicture: {type: String,required:false,default:null},
     userReferred: [],
     solutionSuggested: [],
     actionTaken: [],

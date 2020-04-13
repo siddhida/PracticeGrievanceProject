@@ -12,6 +12,8 @@ app.use(express.json());
 app.use(require("./api/routes/postRoutes/postRoutes"));
 app.use(require("./api/routes/updateRoutes/updateRoutes"));
 app.use(require("./api/routes/getRoutes/getRoutes"));
+app.use(require("./api/routes/deleteRoutes/deleteRoutes"));
+
 app.get("/", function (req, res) {
   res.send("I am working fine...");
 });
